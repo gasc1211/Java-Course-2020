@@ -1,7 +1,9 @@
+package app;
+
 import java.util.Scanner;
+
 public class Exercise_02 {
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
 		Scanner sc = new Scanner(System.in);
 		float n1,n2,n3,n4;

@@ -1,4 +1,7 @@
+package app;
+
 import java.util.Scanner;
+
 public class Exercise_12bouns {
 	public static void main (String[] args) {
 		

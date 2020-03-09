@@ -1,5 +1,8 @@
+package app;
+
 import java.util.Scanner;
 import static java.lang.System.out;
+
 public class Exercise_11 {
 	public static void main(String[] args) {
 		

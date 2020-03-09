@@ -1,9 +1,11 @@
+package app;
+
 import java.util.Hashtable;
 
 public class Exercise_24 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
 		Float pem, pet, pen;
 		
 		pem = 75f;
@@ -19,7 +21,6 @@ public class Exercise_24 {
 		average.put(pem, "Mañana");
 		average.put(pet, "Tarde");
 		average.put(pen, "Noche");
-		
 		
 		System.out.printf("El promedio mayor es el de la jornada de la %s.", average.get(Math.max(pem, Math.max(pet, pen))));
 	}
