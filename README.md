@@ -1,3 +1,3 @@
 # Java-Course-2020
-# SPAM!
+SPAM!
 Java programming exercises.
