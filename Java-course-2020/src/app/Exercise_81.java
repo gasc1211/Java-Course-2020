@@ -11,7 +11,7 @@ public class Exercise_81{
         System.out.printf("El número es: %d.\n", n);
 
         System.out.printf("Las posibles combinaciones que dan %d son:\n", n);
-        for(int i = 1; i < (n / 2) + 1; i++){
+        for(int i = 0; i < (n / 2) + 1; i++){
             System.out.printf("%d + %d = %d.\n", i, (n - i), n);
         }
         
