@@ -1,3 +1,5 @@
 # Java-Course-2020
-SPAM!
+__SPAM!__
 Java programming exercises.
+
+Original idea by: *GASC1211 and Neutrovertido*
