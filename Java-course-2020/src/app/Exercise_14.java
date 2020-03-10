@@ -4,10 +4,9 @@ import java.util.Scanner;
 import java.lang.Math;
 public class Exercise_14{
     
-    public static void main (String[] args){
-        Scanner sc = new Scanner(System.in);
+    public static void main (final String[] args) {
+        final Scanner sc = new Scanner(System.in);
         Integer sum = 0;
-        double rc;
         for (int i=0; i<10; i++){
             System.out.print("Ingrese el numero #" + (i+1) + ": ");
             sum = sum + sc.nextInt();
@@ -22,6 +21,7 @@ public class Exercise_14{
         } else {
             System.out.printf("La raiz cuadrada es de: %2f", Math.sqrt(sum));
         }
+        sc.close();
     }
 
 }
