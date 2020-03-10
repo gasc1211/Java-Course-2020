@@ -1,7 +1,7 @@
 package app;
 
 import java.util.Random;
-public class Exercise_83{
+public class Exercise_82{
 
     public static void main (String[] args){
         Random ra = new Random();
