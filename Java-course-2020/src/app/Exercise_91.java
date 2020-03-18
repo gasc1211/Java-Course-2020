@@ -7,9 +7,9 @@ public class Exercise_91 {
         
         float p = Float.parseFloat(JOptionPane.showInputDialog(null, "Ingresa el precio del auto: "));
 
-        if (p < 500000f) {
+        if (p < 500000) {
             p *= 0.9f;
-        } else if (p > 550000f && p < 700000) {
+        } else if (p > 550000 && p < 700000) {
             p *= 0.85f;
         } else {
             p *= 0.8f;

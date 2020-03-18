@@ -8,9 +8,9 @@ public class Exercise_92 {
         int n[] = new int[3], cache;
 
         do {
-            n[0] = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el número 1: "));
-            n[1] = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el número 2: "));
-            n[2] = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el número 3: "));
+            for (int i = 0; i < n.length; i++){
+                n[i] = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el número "+ (i+1) +":"));
+            }
 
             for (int i = 0; i < n.length; i++) {
                 for (int j = i+1; j < n.length; j++) {
@@ -22,7 +22,7 @@ public class Exercise_92 {
                 }
             }
 
-            JOptionPane.showMessageDialog(null, "El valor central es de: " + n[1], "Resultado", 3);
+            JOptionPane.showMessageDialog(null, "El valor central es : " + n[1] + ".", "Resultado", 3);
 
         } while ((n[0] + n[1] + n[2]) != 15);
 
