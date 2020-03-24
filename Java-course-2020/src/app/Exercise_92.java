@@ -25,7 +25,5 @@ public class Exercise_92 {
             JOptionPane.showMessageDialog(null, "El valor central es : " + n[1] + ".", "Resultado", 3);
 
         } while ((n[0] + n[1] + n[2]) != 15);
-
-
     }
 }
