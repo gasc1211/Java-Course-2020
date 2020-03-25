@@ -15,7 +15,13 @@ public class Exercise_93 {
             rc = r % b[i];
         }
 
-        JOptionPane.showMessageDialog(null, b[0] + " : " + cb[0] + "\n" + b[1] + " : " + cb[1] + "\n" +  b[2] + " : " + cb[2] + "\n" + b[3] + " : " + cb[3] + "\n" + b[4] + " : " + cb[4] + "\n" + b[5] + " : " + cb[5] + "\n" +  b[6] + " : " + cb[6] + "\n" +  b[7] + " : " + cb[7] + "\n", "Fraccionaria", 3);
+        String m = "";
+
+        for (int i = 0; i < b.length; i++) {
+            m += b[i] + " : " + cb[i] + "\n";
+        }
+
+        JOptionPane.showMessageDialog(null, m, "Fraccionaria", 3);
     
     }
 }
