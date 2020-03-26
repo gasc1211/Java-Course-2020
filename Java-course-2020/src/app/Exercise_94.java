@@ -12,6 +12,6 @@ public class Exercise_94 {
             r += n.charAt(i);
         }
 
-        JOptionPane.showMessageDialog(null, "El número era: " + n + ".\n" + "El número invertido es: " + r, "Resultado", 3);
+        JOptionPane.showMessageDialog(null, "El número era: " + n + ".\n" + "El número invertido es: " + r, "Resultado", 1);
     }
 }

@@ -10,6 +10,8 @@ public class Exercise_97 {
 
         float st = q * p, dis = st * d, t = st - dis;
 
-        JOptionPane.showMessageDialog(null, "Subtotal: L. " + st + "\nDescuento: L. " + dis + "\nTotal: L. " + t, "Factura", 3);
+        String m = "Subtotal: " + String.format("L. %.2f", st) + "\nDescuento: " + String.format("L. %.2f", dis) + "\nTotal: " + String.format("L. %.2f", t);
+
+        JOptionPane.showMessageDialog(null, m , "Factura", 1);
     }
-}
+} 

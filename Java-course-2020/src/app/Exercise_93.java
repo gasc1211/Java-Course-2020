@@ -21,7 +21,7 @@ public class Exercise_93 {
             m += b[i] + " : " + cb[i] + "\n";
         }
 
-        JOptionPane.showMessageDialog(null, m, "Fraccionaria", 3);
+        JOptionPane.showMessageDialog(null, m, "Fraccionaria", 1);
     
     }
 }
