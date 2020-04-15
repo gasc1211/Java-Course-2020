@@ -11,6 +11,5 @@ public class Exercise_112 {
             message = String.format("%05d", i).replace('3', 'E');
             JOptionPane.showMessageDialog(null, message, "Contador", 1);
         }
-
     }
 }
