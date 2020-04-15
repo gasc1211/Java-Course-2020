@@ -16,7 +16,7 @@ public class Exercise_110 {
                 n = Math.abs(n);
                 break;
             case "Raíz quinta":
-                n = Math.pow(n, 1/5);
+                n = Math.pow(n, (double)(1/5));
                 break;
             case "Calcular el cuadrado":
                 n = Math.pow(n, 2);
