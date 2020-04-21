@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 
 public class Exercise_116 implements ActionListener {
 
+    private static JTextField txt_name = new JTextField(25);
     private static JTextField txt_n1 = new JTextField(3);
     private static JTextField txt_n2 = new JTextField(3);
     private static JTextField txt_n3 = new JTextField(3);
@@ -19,13 +20,16 @@ public class Exercise_116 implements ActionListener {
     private static JTextField txt_average = new JTextField(3);
     private static JTextField txt_result = new JTextField(20);
 
+    private static JButton btn_clean = new JButton("Limpiar");
+    private static JButton btn_calculate = new JButton("Calcular");    
+
     public Exercise_116() {
 
         // Frame initialization
 
         JFrame frame = new JFrame();
         frame.setTitle("Promedio");
-        frame.setSize(396, 240);
+        frame.setSize(396, 264);
         frame.setResizable(false);
 
         // Panel initialization
@@ -39,8 +43,7 @@ public class Exercise_116 implements ActionListener {
         lbl_name.setBounds(60, 24, 48, 24);
         panel.add(lbl_name);
 
-        JTextField txt_name = new JTextField(25);
-        txt_name.setBounds(128, 24, 184, 24);
+        txt_name.setBounds(128, 24, 196, 24);
         panel.add(txt_name);
 
         // Grades Input
@@ -73,12 +76,15 @@ public class Exercise_116 implements ActionListener {
         txt_n4.setBounds(264, 96, 60, 24);
         panel.add(txt_n4);
 
-        // Button
+        // Buttons
 
-        JButton button = new JButton("Calcular");
-        button.addActionListener(this);
-        button.setBounds(60, 144, 84, 24);
-        panel.add(button);
+        btn_calculate.addActionListener(this);
+        btn_calculate.setBounds(60, 144, 84, 24);
+        panel.add(btn_calculate);
+
+        btn_clean.addActionListener(this);
+        btn_clean.setBounds(60, 180, 84, 24);
+        panel.add(btn_clean);
 
         // Result
 
@@ -87,7 +93,7 @@ public class Exercise_116 implements ActionListener {
         panel.add(txt_average);
 
         txt_result.setEnabled(false);
-        txt_result.setBounds(228, 144, 84, 24);
+        txt_result.setBounds(228, 144, 96, 24);
         panel.add(txt_result);
 
         // Final tweaks
@@ -103,8 +109,9 @@ public class Exercise_116 implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-        int[] n = {Integer.parseInt(txt_n1.getText()), Integer.parseInt(txt_n2.getText()), Integer.parseInt(txt_n3.getText()), Integer.parseInt(txt_n4.getText())};
+        if (e.getSource() == btn_calculate) {
+            int[] n = { Integer.parseInt(txt_n1.getText()), Integer.parseInt(txt_n2.getText()),
+                Integer.parseInt(txt_n3.getText()), Integer.parseInt(txt_n4.getText()) };
 
         float average = 0f;
         String result;
@@ -131,5 +138,17 @@ public class Exercise_116 implements ActionListener {
         txt_result.setText(result);
         txt_average.setText(Float.toString(average));
 
+        } else if (e.getSource() == btn_clean) {
+
+            txt_name.setText("");
+            txt_n1.setText("");
+            txt_n2.setText("");
+            txt_n3.setText("");
+            txt_n4.setText("");
+            txt_average.setText("");
+            txt_average.setBackground(Color.WHITE);
+            txt_result.setText("");
+
+        }
     }
 }
