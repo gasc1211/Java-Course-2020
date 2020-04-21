@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -117,6 +118,7 @@ public class Exercise_116 implements ActionListener {
         if (average < 50) {
             result = "Insuficiente";
         } else if (average < 70) {
+            txt_average.setBackground(Color.RED);
             result = "Reprobado";
         } else if (average < 80) {
             result = "Bueno";
