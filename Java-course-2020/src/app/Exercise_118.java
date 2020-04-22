@@ -46,7 +46,7 @@ public class Exercise_118 {
         constraints.gridwidth = 1;
         panel.add(lbl_passwd, constraints);
 
-        //  Textboxes 
+        // Textboxes 
 
         constraints.anchor = GridBagConstraints.CENTER;
         constraints.fill = GridBagConstraints.CENTER;
