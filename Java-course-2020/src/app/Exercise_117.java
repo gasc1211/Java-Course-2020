@@ -14,31 +14,30 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Exercise_117 implements ActionListener{
+public class Exercise_117 {
 
     public static Font textFont = new Font("Arial", Font.PLAIN, 16);
     public static Font titleFont = new Font("Arial", Font.BOLD, 18);
 
-    public static JTextField cel = new JTextField(8);
-    public static JTextField fah = new JTextField(8);
-
-    public static JButton calcular = new JButton("Calcular");
-    public static JButton limpiar = new JButton("Limpiar");
-
     public Exercise_117() {
+
+        // Frame initialization
+
         JFrame root = new JFrame();
         root.setTitle("Conversor a grados Fahrenheit");
         root.setSize(400, 200);
         root.setResizable(false);
+
+        //Panel & GridLayout setup
         
         JPanel frame = new JPanel(new GridBagLayout());
         GridBagConstraints con = new GridBagConstraints();
-
         con.insets = new Insets(5, 5, 5, 5);
 
-        JLabel titulo = new JLabel();
+        //Labels
+
+        JLabel titulo = new JLabel("Conversor a Fahrenheit");
         titulo.setFont(titleFont);
-        titulo.setText("Conversor a Fahrenheit");
         con.fill = GridBagConstraints.CENTER;
         con.gridx = 0;
         con.gridy = 0;
@@ -51,11 +50,7 @@ public class Exercise_117 implements ActionListener{
         con.gridy = 1;
         con.gridwidth = 1;
         frame.add(lb1, con);
-
-        cel.setFont(textFont);
-        con.gridx = 1;
-        con.anchor = GridBagConstraints.LINE_END;
-        frame.add(cel, con);
+        
 
         JLabel lb2 = new JLabel("Fahrenheit: ");
         lb2.setFont(textFont);
@@ -64,22 +59,60 @@ public class Exercise_117 implements ActionListener{
         con.anchor = GridBagConstraints.CENTER;
         frame.add(lb2, con);
 
+        // Textboxes
+
+        JTextField cel = new JTextField(8);
+        cel.setFont(textFont);
+        con.gridx = 1;
+        con.gridy = 1;
+        con.anchor = GridBagConstraints.LINE_END;
+        frame.add(cel, con);
+
+        JTextField fah = new JTextField(8);
         fah.setFont(textFont);
         fah.setEnabled(false);
         con.gridx = 1;
+        con.gridy = 2;
         con.anchor = GridBagConstraints.LINE_END;
         frame.add(fah, con);
+       
+        // Buttons
 
+        JButton calcular = new JButton("Calcular");
         calcular.setFont(titleFont);
-        calcular.addActionListener(this);
+        calcular.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Double temp = Double.parseDouble(cel.getText());
+
+                temp = (temp * 9/5) + 32;
+                fah.setText(Double.toString(temp));
+
+                if (temp >= 86.0) {
+                    fah.setBackground(Color.RED);
+                } else {
+                    fah.setBackground(Color.BLUE);
+                }
+            }
+        });
         con.gridx = 2;
         con.gridy = 1;
         frame.add(calcular, con);
 
+        JButton limpiar = new JButton("Limpiar");
         limpiar.setFont(titleFont);
-        limpiar.addActionListener(this);
+        limpiar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fah.setText("");
+                cel.setText("");
+                fah.setBackground(Color.WHITE);
+            }
+        });
         con.gridy = 2;
         frame.add(limpiar, con);
+
+        //Final setup
 
         root.add(frame);
         root.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -88,26 +121,6 @@ public class Exercise_117 implements ActionListener{
 
     public static void main(String[] args) {
         new Exercise_117();
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == calcular) {
-            Double temp = Double.parseDouble(cel.getText());
-
-            temp = (temp * 9/5) + 32;
-            fah.setText(Double.toString(temp));
-
-            if (temp >= 86.0) {
-                fah.setBackground(Color.RED);
-            } else {
-                fah.setBackground(Color.BLUE);
-            }
-        } else if (e.getSource() == limpiar) {
-            fah.setText("");
-            cel.setText("");
-            fah.setBackground(Color.WHITE);
-        }
     }
 
 }
