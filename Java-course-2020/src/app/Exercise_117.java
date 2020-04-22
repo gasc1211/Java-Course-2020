@@ -4,6 +4,9 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Font;
 import java.awt.Insets;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,7 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Exercise_117 {
+public class Exercise_117 implements ActionListener{
 
     public static Font textFont = new Font("Arial", Font.PLAIN, 16);
     public static Font titleFont = new Font("Arial", Font.BOLD, 18);
@@ -68,11 +71,13 @@ public class Exercise_117 {
         frame.add(fah, con);
 
         calcular.setFont(titleFont);
+        calcular.addActionListener(this);
         con.gridx = 2;
         con.gridy = 1;
         frame.add(calcular, con);
 
         limpiar.setFont(titleFont);
+        limpiar.addActionListener(this);
         con.gridy = 2;
         frame.add(limpiar, con);
 
@@ -83,6 +88,26 @@ public class Exercise_117 {
 
     public static void main(String[] args) {
         new Exercise_117();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == calcular) {
+            Double temp = Double.parseDouble(cel.getText());
+
+            temp = (temp * 9/5) + 32;
+            fah.setText(Double.toString(temp));
+
+            if (temp >= 86.0) {
+                fah.setBackground(Color.RED);
+            } else {
+                fah.setBackground(Color.BLUE);
+            }
+        } else if (e.getSource() == limpiar) {
+            fah.setText("");
+            cel.setText("");
+            fah.setBackground(Color.WHITE);
+        }
     }
 
 }
