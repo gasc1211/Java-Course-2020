@@ -10,7 +10,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Exercise_116 implements ActionListener {
+public class Exercise_116 {
 
     private static JTextField txt_name = new JTextField(25);
     private static JTextField txt_n1 = new JTextField(3);
@@ -21,7 +21,7 @@ public class Exercise_116 implements ActionListener {
     private static JTextField txt_result = new JTextField(20);
 
     private static JButton btn_clean = new JButton("Limpiar");
-    private static JButton btn_calculate = new JButton("Calcular");    
+    private static JButton btn_calculate = new JButton("Calcular");
 
     public Exercise_116() {
 
@@ -78,11 +78,60 @@ public class Exercise_116 implements ActionListener {
 
         // Buttons
 
-        btn_calculate.addActionListener(this);
+        btn_calculate.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                int[] n = { Integer.parseInt(txt_n1.getText()), Integer.parseInt(txt_n2.getText()),
+                        Integer.parseInt(txt_n3.getText()), Integer.parseInt(txt_n4.getText()) };
+
+                float average = 0f;
+                String result;
+
+                for (int i : n) {
+                    average += i;
+                }
+
+                average /= 4;
+
+                if (average < 50) {
+                    result = "Insuficiente";
+                } else if (average < 70) {
+                    txt_average.setBackground(Color.RED);
+                    result = "Reprobado";
+                } else if (average < 80) {
+                    result = "Bueno";
+                } else if (average < 91) {
+                    result = "Muy Bueno";
+                } else {
+                    result = "Sobresaliente";
+                }
+
+                txt_result.setText(result);
+                txt_average.setText(Float.toString(average));
+
+            }
+        });
         btn_calculate.setBounds(60, 144, 84, 24);
         panel.add(btn_calculate);
 
-        btn_clean.addActionListener(this);
+        btn_clean.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                txt_name.setText("");
+                txt_n1.setText("");
+                txt_n2.setText("");
+                txt_n3.setText("");
+                txt_n4.setText("");
+                txt_average.setText("");
+                txt_average.setBackground(Color.WHITE);
+                txt_result.setText("");
+
+            }
+        });
         btn_clean.setBounds(60, 180, 84, 24);
         panel.add(btn_clean);
 
@@ -105,50 +154,5 @@ public class Exercise_116 implements ActionListener {
 
     public static void main(String[] args) {
         new Exercise_116();
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == btn_calculate) {
-            int[] n = { Integer.parseInt(txt_n1.getText()), Integer.parseInt(txt_n2.getText()),
-                Integer.parseInt(txt_n3.getText()), Integer.parseInt(txt_n4.getText()) };
-
-        float average = 0f;
-        String result;
-
-        for (int i : n) {
-            average += i;
-        }
-
-        average /= 4;
-
-        if (average < 50) {
-            result = "Insuficiente";
-        } else if (average < 70) {
-            txt_average.setBackground(Color.RED);
-            result = "Reprobado";
-        } else if (average < 80) {
-            result = "Bueno";
-        } else if (average < 91) {
-            result = "Muy Bueno";
-        } else {
-            result = "Sobresaliente";
-        }
-
-        txt_result.setText(result);
-        txt_average.setText(Float.toString(average));
-
-        } else if (e.getSource() == btn_clean) {
-
-            txt_name.setText("");
-            txt_n1.setText("");
-            txt_n2.setText("");
-            txt_n3.setText("");
-            txt_n4.setText("");
-            txt_average.setText("");
-            txt_average.setBackground(Color.WHITE);
-            txt_result.setText("");
-
-        }
     }
 }
