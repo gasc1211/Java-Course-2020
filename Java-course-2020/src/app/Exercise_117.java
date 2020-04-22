@@ -13,7 +13,8 @@ public class Exercise_117 {
 
     public static Font myFont = new Font("Arial", Font.PLAIN, 16);
 
-    public static JTextField cel = new JTextField(5);
+    public static JTextField cel = new JTextField(8);
+    public static JTextField fah = new JTextField(8);
 
     public Exercise_117() {
         JFrame root = new JFrame();
@@ -41,6 +42,7 @@ public class Exercise_117 {
 
         cel.setFont(myFont);
         con.gridx = 1;
+        con.anchor = GridBagConstraints.LINE_END;
         frame.add(cel, con);
 
         root.add(frame);
