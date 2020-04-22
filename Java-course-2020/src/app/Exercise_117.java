@@ -3,7 +3,9 @@ package app;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Font;
+import java.awt.Insets;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -11,39 +13,68 @@ import javax.swing.JTextField;
 
 public class Exercise_117 {
 
-    public static Font myFont = new Font("Arial", Font.PLAIN, 16);
+    public static Font textFont = new Font("Arial", Font.PLAIN, 16);
+    public static Font titleFont = new Font("Arial", Font.BOLD, 18);
 
     public static JTextField cel = new JTextField(8);
     public static JTextField fah = new JTextField(8);
 
+    public static JButton calcular = new JButton("Calcular");
+    public static JButton limpiar = new JButton("Limpiar");
+
     public Exercise_117() {
         JFrame root = new JFrame();
         root.setTitle("Conversor a grados Fahrenheit");
-        root.setSize(500, 500);
+        root.setSize(400, 200);
         root.setResizable(false);
         
         JPanel frame = new JPanel(new GridBagLayout());
         GridBagConstraints con = new GridBagConstraints();
 
+        con.insets = new Insets(5, 5, 5, 5);
+
         JLabel titulo = new JLabel();
-        titulo.setFont(new Font("Arial", Font.BOLD, 18));
+        titulo.setFont(titleFont);
         titulo.setText("Conversor a Fahrenheit");
-        con.fill = GridBagConstraints.HORIZONTAL;
+        con.fill = GridBagConstraints.CENTER;
         con.gridx = 0;
         con.gridy = 0;
         con.gridwidth = 3;
         frame.add(titulo, con);
 
         JLabel lb1 = new JLabel("Celsius: ");
-        lb1.setFont(myFont);
+        lb1.setFont(textFont);
+        con.fill = GridBagConstraints.HORIZONTAL;
         con.gridy = 1;
         con.gridwidth = 1;
         frame.add(lb1, con);
 
-        cel.setFont(myFont);
+        cel.setFont(textFont);
         con.gridx = 1;
         con.anchor = GridBagConstraints.LINE_END;
         frame.add(cel, con);
+
+        JLabel lb2 = new JLabel("Fahrenheit: ");
+        lb2.setFont(textFont);
+        con.gridy = 2;
+        con.gridx = 0;
+        con.anchor = GridBagConstraints.CENTER;
+        frame.add(lb2, con);
+
+        fah.setFont(textFont);
+        fah.setEnabled(false);
+        con.gridx = 1;
+        con.anchor = GridBagConstraints.LINE_END;
+        frame.add(fah, con);
+
+        calcular.setFont(titleFont);
+        con.gridx = 2;
+        con.gridy = 1;
+        frame.add(calcular, con);
+
+        limpiar.setFont(titleFont);
+        con.gridy = 2;
+        frame.add(limpiar, con);
 
         root.add(frame);
         root.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
