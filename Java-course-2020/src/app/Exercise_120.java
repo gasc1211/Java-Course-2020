@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
 
 public class Exercise_120 extends javax.swing.JFrame {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 4734769275583274300L;
     private JLabel lbl_n1;
     private JLabel lbl_n2;
     private JTextField txt_n1;
@@ -81,12 +81,14 @@ public class Exercise_120 extends javax.swing.JFrame {
         constraints.gridy = 1;
         panel.add(txt_n2, constraints);
 
-        // Results Textboxes
+        // Results Panel
 
-        JPanel internalPanel_txt = new JPanel(new GridBagLayout());
-        internalPanel_txt.setBorder(BorderFactory.createTitledBorder("Resultados"));
+        JPanel txt_panel = new JPanel(new GridBagLayout());
+        txt_panel.setBorder(BorderFactory.createTitledBorder("Resultados"));
         GridBagConstraints cons_txt = new GridBagConstraints();
         cons_txt.insets = new Insets(7, 5, 7, 5);
+
+        // Results Textboxes
 
         cons_txt.fill = GridBagConstraints.LINE_START;
         cons_txt.anchor = GridBagConstraints.LINE_START;
@@ -95,36 +97,38 @@ public class Exercise_120 extends javax.swing.JFrame {
         txt_add.setEnabled(false);
         cons_txt.gridx = 0;
         cons_txt.gridy = 0;
-        internalPanel_txt.add(txt_add, cons_txt);
+        txt_panel.add(txt_add, cons_txt);
 
         txt_sub = new JTextField(15);
         txt_sub.setEnabled(false);
         cons_txt.gridx = 0;
         cons_txt.gridy = 1;
-        internalPanel_txt.add(txt_sub, cons_txt);
+        txt_panel.add(txt_sub, cons_txt);
 
         txt_mul = new JTextField(15);
         txt_mul.setEnabled(false);
         cons_txt.gridx = 0;
         cons_txt.gridy = 2;
-        internalPanel_txt.add(txt_mul, cons_txt);
+        txt_panel.add(txt_mul, cons_txt);
 
         txt_div = new JTextField(15);
         txt_div.setEnabled(false);
         cons_txt.gridx = 0;
         cons_txt.gridy = 3;
-        internalPanel_txt.add(txt_div, cons_txt);
+        txt_panel.add(txt_div, cons_txt);
 
         constraints.gridx = 1;
         constraints.gridy = 2;
-        panel.add(internalPanel_txt, constraints);
+        panel.add(txt_panel, constraints);
 
-        // Radiobuttons
+        // Operations Panel
 
-        JPanel internalPanel_chk = new JPanel(new GridBagLayout());
-        internalPanel_chk.setBorder(BorderFactory.createTitledBorder("Operaciones"));
+        JPanel chk_panel = new JPanel(new GridBagLayout());
+        chk_panel.setBorder(BorderFactory.createTitledBorder("Operaciones"));
         GridBagConstraints cons_chk = new GridBagConstraints();
         cons_chk.insets = new Insets(5, 5, 5, 5);
+
+        // Operations Checkboxes
 
         cons_chk.fill = GridBagConstraints.LINE_START;
         cons_chk.anchor = GridBagConstraints.LINE_START;
@@ -133,49 +137,49 @@ public class Exercise_120 extends javax.swing.JFrame {
         chk_add.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                operate(e, chk_add, txt_add, '+');
+                operate(chk_add, txt_add, '+');
             }
         });
         cons_chk.gridx = 0;
         cons_chk.gridy = 0;
-        internalPanel_chk.add(chk_add, cons_chk);
+        chk_panel.add(chk_add, cons_chk);
 
         chk_sub = new JCheckBox("Resta");
         chk_sub.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                operate(e, chk_sub, txt_sub, '-');
+                operate(chk_sub, txt_sub, '-');
             }
         });
         cons_chk.gridx = 0;
         cons_chk.gridy = 1;
-        internalPanel_chk.add(chk_sub, cons_chk);
+        chk_panel.add(chk_sub, cons_chk);
 
         chk_mul = new JCheckBox("Multiplicación");
         chk_mul.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                operate(e, chk_mul, txt_mul, '*');
+                operate(chk_mul, txt_mul, '*');
             }
         });
         cons_chk.gridx = 0;
         cons_chk.gridy = 2;
-        internalPanel_chk.add(chk_mul, cons_chk);
+        chk_panel.add(chk_mul, cons_chk);
 
         chk_div = new JCheckBox("División");
         chk_div.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                operate(e, chk_div, txt_div, '/');
+                operate(chk_div, txt_div, '/');
             }
         });
         cons_chk.gridx = 0;
         cons_chk.gridy = 3;
-        internalPanel_chk.add(chk_div, cons_chk);
+        chk_panel.add(chk_div, cons_chk);
 
         constraints.gridx = 0;
         constraints.gridy = 2;
-        panel.add(internalPanel_chk, constraints);
+        panel.add(chk_panel, constraints);
 
         // Buttons
 
@@ -184,12 +188,10 @@ public class Exercise_120 extends javax.swing.JFrame {
 
         btn_exit = new JButton("Salir");
         btn_exit.addActionListener(new ActionListener() {
-
             @Override
             public void actionPerformed(ActionEvent e) {
-                btn_exitAction(e);
+                btn_exitAction();
             }
-
         });
         constraints.gridx = 1;
         constraints.gridy = 3;
@@ -197,12 +199,10 @@ public class Exercise_120 extends javax.swing.JFrame {
 
         btn_clear = new JButton("Limpiar");
         btn_clear.addActionListener(new ActionListener() {
-
             @Override
             public void actionPerformed(ActionEvent e) {
-                btn_clearAction(e);
+                btn_clearAction();
             }
-
         });
         constraints.gridx = 0;
         constraints.gridy = 3;
@@ -214,36 +214,38 @@ public class Exercise_120 extends javax.swing.JFrame {
         this.setVisible(true);
     }
 
-    private void operate(ActionEvent e, JCheckBox chk, JTextField txt, char operation) {
+    private void operate(JCheckBox chk, JTextField txt, char operation) {
 
         Double n1 = Double.parseDouble(txt_n1.getText());
         Double n2 = Double.parseDouble(txt_n2.getText());
+        Double result = 0.0;
 
         if (chk.isSelected()) {
             switch (operation) {
                 case '+':
-                    txt.setText(String.format(" = %.2f", n1 + n2));
+                    result = n1 + n2;
                     break;
                 case '-':
-                    txt.setText(String.format(" = %.2f", n1 - n2));
+                    result = n1 - n2;
                     break;
                 case '*':
-                    txt.setText(String.format(" = %.2f", n1 * n2));
+                    result = n1 * n2;
                     break;
                 case '/':
-                    txt.setText(String.format(" = %.2f", n1 / n2));
+                    result = n1 / n2;
                     break;
             }
+            txt.setText(String.format(" = %.2f", result));
         } else {
             txt.setText("Operación no seleccionada.");
         }
     }
 
-    private void btn_exitAction(ActionEvent e) {
+    private void btn_exitAction() {
         System.exit(0);
     }
 
-    private void btn_clearAction(ActionEvent e) {
+    private void btn_clearAction() {
         txt_n1.setText("");
         txt_n2.setText("");
         txt_add.setText("");

@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
 
 public class Exercise_119 extends javax.swing.JFrame {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 8233864423565223999L;
     private JLabel lbl_nums;
     private JTextField txt_n1;
     private JTextField txt_n2;
