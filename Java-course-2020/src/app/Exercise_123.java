@@ -16,6 +16,7 @@ public class Exercise_123 extends JFrame {
     private JComboBox cmes = new JComboBox();
 
     private String meses[] = { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
+    private JFrame refval = this;
 
     public Exercise_123() {
         initComponents();
@@ -25,7 +26,7 @@ public class Exercise_123 extends JFrame {
 
         this.setResizable(false);
         this.setSize(400, 150);
-        this.setTitle("Estación");
+        this.setTitle("Invierno");
 
         JPanel root = new JPanel();
         root.setLayout(new GridBagLayout());
@@ -51,7 +52,34 @@ public class Exercise_123 extends JFrame {
         cmes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                String mes = String.valueOf(cmes.getSelectedItem());
+                String y = "";
+                switch (mes) {
+                    case "Diciembre":
+                    case "Enero":
+                    case "Febrero":
+                        y="Invierno";
+                        break;
+                    case "Marzo":
+                    case "Abril":
+                    case "Mayo":
+                    case "Junio":
+                        y="Primavera";
+                        break;
+                    case "Julio":
+                    case "Agosto":
+                    case "Septiembre":
+                        y="Verano";
+                        break;
+                    case "Octubre":
+                    case "Noviembre":
+                        y="Otoño";
+                        break;
+                    default:
+                        y="Estacion";
+                        break;
+                }
+                refval.setTitle(y);
             }
         });
         root.add(cmes, con);
