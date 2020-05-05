@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 public class Exercise_122 extends JFrame {
 
     private static final long serialVersionUID = 6825655101757518603L;
-    
+
     private Font myFont = new Font("Arial", Font.PLAIN, 16);
     private Font tFont = new Font("Arial", Font.BOLD, 18);
     
@@ -51,6 +51,46 @@ public class Exercise_122 extends JFrame {
         con.gridy = 1;
         con.gridwidth = 1;
         con.anchor = GridBagConstraints.LINE_START;
+        cpais.addActionListener(new ActionListener () {
+            @Override
+            public void actionPerformed (ActionEvent e) {
+                String pais = String.valueOf(cpais.getSelectedItem());
+                String x = "";
+                switch (pais) {
+                    case "Alemania":
+                        x = "Berlín";
+                        break;
+                    case "Italia":
+                        x = "Roma";
+                        break;
+                    case "Grecia":
+                        x = "Atenas";
+                        break;
+                    case "Suecia":
+                        x = "Estocolmo";
+                        break;
+                    case "Rusia":
+                        x = "Moscú";
+                        break;
+                    case "Noruega":
+                        x = "Oslo";
+                        break;
+                    case "Francia":
+                        x = "París";
+                        break;
+                    case "Polonia":
+                        x = "Varsovia";
+                        break;
+                    case "España":
+                        x = "Madrid";
+                        break;
+                    case "Inglaterra":
+                        x = "Londres";
+                        break;    
+                }
+                ccapital.setText(x);
+            }
+        });
         root.add(cpais, con);
 
         ccapital.setEnabled(false);
