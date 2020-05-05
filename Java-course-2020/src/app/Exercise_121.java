@@ -10,7 +10,7 @@ public class Exercise_121 extends javax.swing.JFrame {
     private static final long serialVersionUID = 8378210056333509452L;
     
     private JButton btn_auth;
-    private String author = "Gabriel Alejandro Suazo Castro #24";
+    private String author = "Your Name #Your Account";
     private JLabel lbl_auth;
     private JLabel lbl_color;
     private JLabel lbl_align;

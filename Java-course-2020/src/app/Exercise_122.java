@@ -4,20 +4,37 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Hashtable;
 
 public class Exercise_122 extends JFrame {
 
     private static final long serialVersionUID = 6825655101757518603L;
 
+    private String paises[] = { "Alemania", "Italia", "Grecia", "Suecia", "Rusia", "Noruega", "Francia", "Polonia", "España", "Inglaterra" };
+    private Hashtable<String, String> capitales = new Hashtable<String, String>(){
+
+        private static final long serialVersionUID = -5638063078026411519L;
+
+        {
+            put("Alemania", "Berlín");
+            put("Italia", "Roma");
+            put("Grecia", "Atenas");
+            put("Suecia", "Estocolmo");
+            put("Rusia", "Moscú");
+            put("Noruega", "Oslo");
+            put("Francia", "París");
+            put("Polonia", "Varsovia");
+            put("España", "Madrid");
+            put("Inglaterra", "Londres");
+        }
+    };
+
     private Font myFont = new Font("Arial", Font.PLAIN, 16);
     private Font tFont = new Font("Arial", Font.BOLD, 18);
 
     private JLabel titulo = new JLabel();
-    private JComboBox cpais = new JComboBox();
+    private JComboBox<String> cpais = new JComboBox<>(paises);
     private JTextField ccapital = new JTextField(12);
-
-    private String paises[] = { "Alemania", "Italia", "Grecia", "Suecia", "Rusia", "Noruega", "Francia", "Polonia",
-            "España", "Inglaterra" };
 
     public Exercise_122() {
         initComponents();
@@ -43,10 +60,6 @@ public class Exercise_122 extends JFrame {
         con.gridwidth = 2;
         root.add(titulo, con);
 
-        for (String i : paises) {
-            cpais.addItem(i);
-        }
-
         cpais.setFont(myFont);
         con.gridx = 0;
         con.gridy = 1;
@@ -56,40 +69,7 @@ public class Exercise_122 extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String pais = String.valueOf(cpais.getSelectedItem());
-                String x = "";
-                switch (pais) {
-                    case "Alemania":
-                        x = "Berlín";
-                        break;
-                    case "Italia":
-                        x = "Roma";
-                        break;
-                    case "Grecia":
-                        x = "Atenas";
-                        break;
-                    case "Suecia":
-                        x = "Estocolmo";
-                        break;
-                    case "Rusia":
-                        x = "Moscú";
-                        break;
-                    case "Noruega":
-                        x = "Oslo";
-                        break;
-                    case "Francia":
-                        x = "París";
-                        break;
-                    case "Polonia":
-                        x = "Varsovia";
-                        break;
-                    case "España":
-                        x = "Madrid";
-                        break;
-                    case "Inglaterra":
-                        x = "Londres";
-                        break;
-                }
-                ccapital.setText(x);
+                ccapital.setText(capitales.get(pais));
             }
         });
         root.add(cpais, con);

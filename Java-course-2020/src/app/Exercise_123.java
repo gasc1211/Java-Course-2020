@@ -4,19 +4,40 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Hashtable;
 
 public class Exercise_123 extends JFrame {
 
     private static final long serialVersionUID = -3094403425238379186L;
+    
+    private String meses[] = { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
 
+    private Hashtable<String, String> estaciones = new Hashtable<String, String>(){
+
+        private static final long serialVersionUID = -5638063078026411519L;
+
+        {
+            put("Enero", "Invierno");
+            put("Febrero", "Invierno");
+            put("Marzo", "Primavera");
+            put("Abril", "Primavera");
+            put("Mayo", "Primavera");
+            put("Junio", "Primavera");
+            put("Julio", "Verano");
+            put("Agosto", "Verano");
+            put("Septiembre", "Verano");
+            put("Octubre", "Otoño");
+            put("Noviembre", "Otoño");
+            put("Diciembre", "Invierno");
+        }
+    };
+    
     private Font myFont = new Font("Arial", Font.PLAIN, 16);
     private Font tFont = new Font("Arial", Font.BOLD, 18);
 
     private JLabel titulo = new JLabel();
-    private JComboBox cmes = new JComboBox();
+    private JComboBox<String> cmes = new JComboBox<>(meses);
 
-    private String meses[] = { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre",
-            "Octubre", "Noviembre", "Diciembre" };
     private JFrame refval = this;
 
     public Exercise_123() {
@@ -42,10 +63,6 @@ public class Exercise_123 extends JFrame {
         con.gridy = 0;
         root.add(titulo, con);
 
-        for (String i : meses) {
-            cmes.addItem(i);
-        }
-
         cmes.setFont(myFont);
         con.gridx = 0;
         con.gridy = 1;
@@ -54,33 +71,21 @@ public class Exercise_123 extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String mes = String.valueOf(cmes.getSelectedItem());
-                String y = "";
-                switch (mes) {
-                    case "Diciembre":
-                    case "Enero":
-                    case "Febrero":
-                        y = "Invierno";
+                refval.setTitle(estaciones.get(mes));
+                switch (estaciones.get(mes)) {
+                    case "Invierno" :
+                        root.setBackground(Color.BLUE);
                         break;
-                    case "Marzo":
-                    case "Abril":
-                    case "Mayo":
-                    case "Junio":
-                        y = "Primavera";
+                    case "Primavera" :
+                        root.setBackground(Color.ORANGE);
                         break;
-                    case "Julio":
-                    case "Agosto":
-                    case "Septiembre":
-                        y = "Verano";
+                    case "Verano" :
+                        root.setBackground(Color.YELLOW);
                         break;
-                    case "Octubre":
-                    case "Noviembre":
-                        y = "Otoño";
-                        break;
-                    default:
-                        y = "Estacion";
+                    case "Otoño" :
+                        root.setBackground(Color.GRAY);
                         break;
                 }
-                refval.setTitle(y);
             }
         });
         root.add(cmes, con);
