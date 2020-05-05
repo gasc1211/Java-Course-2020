@@ -11,13 +11,14 @@ public class Exercise_122 extends JFrame {
 
     private Font myFont = new Font("Arial", Font.PLAIN, 16);
     private Font tFont = new Font("Arial", Font.BOLD, 18);
-    
+
     private JLabel titulo = new JLabel();
     private JComboBox cpais = new JComboBox();
     private JTextField ccapital = new JTextField(12);
 
-    private String paises[] = {"Alemania","Italia","Grecia","Suecia","Rusia","Noruega","Francia","Polonia","España","Inglaterra"};
-    
+    private String paises[] = { "Alemania", "Italia", "Grecia", "Suecia", "Rusia", "Noruega", "Francia", "Polonia",
+            "España", "Inglaterra" };
+
     public Exercise_122() {
         initComponents();
     }
@@ -31,7 +32,7 @@ public class Exercise_122 extends JFrame {
         JPanel root = new JPanel();
         root.setLayout(new GridBagLayout());
         GridBagConstraints con = new GridBagConstraints();
-        con.insets = new Insets(5, 5, 5 ,5);
+        con.insets = new Insets(5, 5, 5, 5);
         con.anchor = GridBagConstraints.CENTER;
         this.add(root);
 
@@ -42,7 +43,7 @@ public class Exercise_122 extends JFrame {
         con.gridwidth = 2;
         root.add(titulo, con);
 
-        for (String i:paises) {
+        for (String i : paises) {
             cpais.addItem(i);
         }
 
@@ -51,9 +52,9 @@ public class Exercise_122 extends JFrame {
         con.gridy = 1;
         con.gridwidth = 1;
         con.anchor = GridBagConstraints.LINE_START;
-        cpais.addActionListener(new ActionListener () {
+        cpais.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed (ActionEvent e) {
+            public void actionPerformed(ActionEvent e) {
                 String pais = String.valueOf(cpais.getSelectedItem());
                 String x = "";
                 switch (pais) {
@@ -86,7 +87,7 @@ public class Exercise_122 extends JFrame {
                         break;
                     case "Inglaterra":
                         x = "Londres";
-                        break;    
+                        break;
                 }
                 ccapital.setText(x);
             }
