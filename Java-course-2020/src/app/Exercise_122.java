@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 
 public class Exercise_122 extends JFrame {
 
+    private static final long serialVersionUID = 6825655101757518603L;
+    
     private Font myFont = new Font("Arial", Font.PLAIN, 16);
     private Font tFont = new Font("Arial", Font.BOLD, 18);
     
