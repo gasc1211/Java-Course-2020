@@ -8,14 +8,15 @@ import java.awt.event.ActionListener;
 public class Exercise_123 extends JFrame {
 
     private static final long serialVersionUID = -3094403425238379186L;
-    
+
     private Font myFont = new Font("Arial", Font.PLAIN, 16);
     private Font tFont = new Font("Arial", Font.BOLD, 18);
 
     private JLabel titulo = new JLabel();
     private JComboBox cmes = new JComboBox();
 
-    private String meses[] = { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
+    private String meses[] = { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre",
+            "Octubre", "Noviembre", "Diciembre" };
     private JFrame refval = this;
 
     public Exercise_123() {
@@ -58,25 +59,25 @@ public class Exercise_123 extends JFrame {
                     case "Diciembre":
                     case "Enero":
                     case "Febrero":
-                        y="Invierno";
+                        y = "Invierno";
                         break;
                     case "Marzo":
                     case "Abril":
                     case "Mayo":
                     case "Junio":
-                        y="Primavera";
+                        y = "Primavera";
                         break;
                     case "Julio":
                     case "Agosto":
                     case "Septiembre":
-                        y="Verano";
+                        y = "Verano";
                         break;
                     case "Octubre":
                     case "Noviembre":
-                        y="Otoño";
+                        y = "Otoño";
                         break;
                     default:
-                        y="Estacion";
+                        y = "Estacion";
                         break;
                 }
                 refval.setTitle(y);
