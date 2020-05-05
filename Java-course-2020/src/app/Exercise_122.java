@@ -11,6 +11,10 @@ public class Exercise_122 extends JFrame {
     private Font tFont = new Font("Arial", Font.BOLD, 18);
     
     private JLabel titulo = new JLabel();
+    private JComboBox cpais = new JComboBox();
+    private JTextField ccapital = new JTextField(12);
+
+    private String paises[] = {"Alemania","Italia","Grecia","Suecia","Rusia","Noruega","Francia","Polonia","España","Inglaterra"};
     
     public Exercise_122() {
         initComponents();
@@ -19,7 +23,7 @@ public class Exercise_122 extends JFrame {
     private void initComponents() {
 
         this.setResizable(false);
-        this.setSize(600, 400);
+        this.setSize(400, 150);
         this.setTitle("Europa");
 
         JPanel root = new JPanel();
@@ -33,7 +37,26 @@ public class Exercise_122 extends JFrame {
         titulo.setFont(tFont);
         con.gridx = 0;
         con.gridy = 0;
+        con.gridwidth = 2;
         root.add(titulo, con);
+
+        for (String i:paises) {
+            cpais.addItem(i);
+        }
+
+        cpais.setFont(myFont);
+        con.gridx = 0;
+        con.gridy = 1;
+        con.gridwidth = 1;
+        con.anchor = GridBagConstraints.LINE_START;
+        root.add(cpais, con);
+
+        ccapital.setEnabled(false);
+        ccapital.setFont(myFont);
+        ccapital.setText("Berlín");
+        con.gridx = 1;
+        con.gridy = 1;
+        root.add(ccapital, con);
 
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setVisible(true);
