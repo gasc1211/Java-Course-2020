@@ -139,7 +139,7 @@ public class Exercise_128 extends JFrame {
         JRadioButton camioneta = new JRadioButton("Camioneta");
         JRadioButton motocicleta = new JRadioButton("Motocicleta");
         ImageIcon image = new ImageIcon("Java-course-2020/images/turismo.png");
-        Image img = image.getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH);
+        Image img = image.getImage().getScaledInstance(64, 48, Image.SCALE_SMOOTH);
         image = new ImageIcon(img);
         JLabel preview = new JLabel();
         preview.setIcon(image);
@@ -168,6 +168,21 @@ public class Exercise_128 extends JFrame {
             modelo.add(i);
         }
         modelo.add(preview);
+
+        // Buttons
+        JPanel pButtons = new JPanel(new GridLayout());
+        con.gridy = 5;
+        con.gridx = 0;
+        con.gridwidth = 3;
+
+        JButton bcalc = new JButton("Calcular");
+        pButtons.add(bcalc);
+        JButton blimp = new JButton("Limpiar");
+        pButtons.add(blimp);
+        JButton bsalir = new JButton("Salir");
+        pButtons.add(bsalir);
+
+        root.add(pButtons, con);
 
         // Execution tweaks
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
