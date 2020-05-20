@@ -20,7 +20,7 @@ public class Exercise_125 extends JFrame {
 
     public void initComponents() {
         this.setResizable(false);
-        this.setSize(200, 100);
+        this.setSize(300, 100);
 
         JPanel root = new JPanel();
         this.add(root);
