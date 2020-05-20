@@ -3,17 +3,16 @@ package app;
 import javax.swing.*;
 import java.awt.*;
 
-public class Exercise_128 extends JFrame{
-    
+public class Exercise_128 extends JFrame {
+
     // Serial Version ID
     private static final long serialVersionUID = 7902961663740510268L;
-
 
     public Exercise_128() {
 
         // Frame properties
         this.setTitle("Deja Vu Motors");
-        this.setSize(360, 600);
+        this.setSize(460, 600);
         this.setResizable(false);
 
         // Panel setup
@@ -66,7 +65,7 @@ public class Exercise_128 extends JFrame{
         JCheckBox gps = new JCheckBox();
         gps.setText("GPS");
         extras.add(gps);
-        
+
         con.gridx = 1;
         con.gridy = 2;
         con.gridwidth = 2;
@@ -103,6 +102,7 @@ public class Exercise_128 extends JFrame{
         scon.gridx = 1;
         scon.gridy = 0;
         JTextField cdias = new JTextField(10);
+        cdias.setFont(mF);
         fact.add(cdias, scon);
         JTextField cmodelo = new JTextField(10);
         scon.gridy = 1;
@@ -121,20 +121,46 @@ public class Exercise_128 extends JFrame{
         fact.add(cisv, scon);
         JTextField ctotal = new JTextField(10);
         ctotal.setFont(new Font("Tahoma", Font.BOLD, 14));
+        ctotal.setEnabled(false);
         scon.gridy = 6;
         fact.add(ctotal, scon);
 
         con.gridy = 3;
         root.add(fact, con);
 
+        // Panel: Modelo
+        JPanel modelo = new JPanel(new GridLayout(6, 1));
+        modelo.setBorder(BorderFactory.createTitledBorder("Modelo"));
+
+        ButtonGroup gmodelo = new ButtonGroup();
+        JRadioButton turismo = new JRadioButton("Turismo", true);
+        JRadioButton pickup = new JRadioButton("Pick Up");
+        JRadioButton microbus = new JRadioButton("Microbús");
+        JRadioButton camioneta = new JRadioButton("Camioneta");
+        JRadioButton motocicleta = new JRadioButton("Motocicleta");
+
+        con.gridx = 0;
+        con.gridy = 2;
+        con.gridwidth = 1;
+        con.gridheight = 2;
+        root.add(modelo, con);
+
         // Font styling
-        JLabel labels[] = {lf1, lf2, lf3, lf4, lf5, lf6};
-        for (JLabel i:labels) {
+        JLabel labels[] = { lf1, lf2, lf3, lf4, lf5, lf6 };
+        for (JLabel i : labels) {
             i.setFont(mF);
         }
-        JTextField fields[] = {cdias, cmodelo, cextras, csubtotal, cdesc, cisv};
-        for (JTextField i:fields) {
+        JTextField fields[] = { cmodelo, cextras, csubtotal, cdesc, cisv };
+        for (JTextField i : fields) {
             i.setFont(mF);
+            i.setEnabled(false);
+        }
+
+        // RadioButton aditions
+        JRadioButton radio[] = { turismo, pickup, microbus, camioneta, motocicleta };
+        for (JRadioButton i : radio) {
+            gmodelo.add(i);
+            modelo.add(i);
         }
 
         // Execution tweaks
