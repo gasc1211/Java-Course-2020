@@ -138,7 +138,7 @@ public class Exercise_128 extends JFrame {
         JRadioButton microbus = new JRadioButton("Microbús");
         JRadioButton camioneta = new JRadioButton("Camioneta");
         JRadioButton motocicleta = new JRadioButton("Motocicleta");
-        ImageIcon image = new ImageIcon("Java-course-2020/images/default.png");
+        ImageIcon image = new ImageIcon("Java-course-2020/images/turismo.png");
         Image img = image.getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH);
         image = new ImageIcon(img);
         JLabel preview = new JLabel();
