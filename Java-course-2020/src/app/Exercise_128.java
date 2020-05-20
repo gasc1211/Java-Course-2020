@@ -257,6 +257,17 @@ public class Exercise_128 extends JFrame {
                 }
                 ctotal.setText("");
                 cdias.setText("");
+
+                aire.setSelected(false);
+                radp.setSelected(false);
+                pelec.setSelected(false);
+                gps.setSelected(false);
+                turismo.setSelected(true);
+
+                ImageIcon image = new ImageIcon("Java-course-2020/images/turismo.png");
+                Image img = image.getImage().getScaledInstance(64, 48, Image.SCALE_SMOOTH);
+                image = new ImageIcon(img);
+                preview.setIcon(image);
             }
         });
         pButtons.add(blimp);
