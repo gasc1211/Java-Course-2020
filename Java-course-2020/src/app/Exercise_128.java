@@ -2,6 +2,7 @@ package app;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class Exercise_128 extends JFrame {
 
@@ -9,6 +10,9 @@ public class Exercise_128 extends JFrame {
     private static final long serialVersionUID = 7902961663740510268L;
 
     public Exercise_128() {
+
+        // For external methods
+        JFrame refval = this;
 
         // Frame properties
         this.setTitle("Deja Vu Motors");
@@ -166,6 +170,26 @@ public class Exercise_128 extends JFrame {
         for (JRadioButton i : radio) {
             gmodelo.add(i);
             modelo.add(i);
+            i.addActionListener(new ActionListener() {
+                public void actionPerformed (ActionEvent e) {
+                    String route = "";
+                    if (turismo.isSelected()) {
+                        route = "turismo.png";
+                    } else if (pickup.isSelected()) {
+                        route = "pickup.png";
+                    } else if (microbus.isSelected()) {
+                        route = "microbus.png";
+                    } else if (camioneta.isSelected()) {
+                        route = "camioneta.png";
+                    } else if (motocicleta.isSelected()) {
+                        route = "motocicleta.png";
+                    }
+                    ImageIcon image = new ImageIcon("Java-course-2020/images/" + route);
+                    Image img = image.getImage().getScaledInstance(64, 48, Image.SCALE_SMOOTH);
+                    image = new ImageIcon(img);
+                    preview.setIcon(image);
+                }
+            });
         }
         modelo.add(preview);
 
@@ -176,10 +200,74 @@ public class Exercise_128 extends JFrame {
         con.gridwidth = 3;
 
         JButton bcalc = new JButton("Calcular");
+        bcalc.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                double dr = Double.parseDouble(String.valueOf(cdias.getText()));
+                double mod = 0.0;
+                double extras = 0.0;
+                double desc = 0;
+                if (turismo.isSelected()) {
+                    mod = dr * 1200.0;
+                } else if (pickup.isSelected()) {
+                    mod = dr * 1635.0;
+                } else if (microbus.isSelected()) {
+                    mod = dr * 2000.0;
+                } else if (camioneta.isSelected()) {
+                    mod = dr * 1850.0;
+                } else if (motocicleta.isSelected()) {
+                    mod = dr * 500.0;
+                }
+
+                if (aire.isSelected()) {
+                    extras += 200.0;
+                }
+                if (radp.isSelected()) {
+                    extras += 300.0;
+                }
+                if (pelec.isSelected()) {
+                    extras += 400.0;
+                }
+                if (gps.isSelected()) {
+                    extras += 200.0;
+                }
+
+                double subtotal = mod + extras;
+                if (dr > 4) {
+                    desc = subtotal * 0.10;
+                }
+                double isv = subtotal * 0.15;
+                double total = subtotal + isv - desc;
+
+                cmodelo.setText(String.format("%.2f", mod));
+                cextras.setText(String.format("%.2f", extras));
+                csubtotal.setText(String.format("%.2f", subtotal));
+                cdesc.setText(String.format("%.2f", desc));
+                cisv.setText(String.format("%.2f", isv));
+                ctotal.setText(String.format("L. %.2f", total));
+            }
+        });
         pButtons.add(bcalc);
         JButton blimp = new JButton("Limpiar");
+        blimp.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (JTextField i : fields) {
+                    i.setText("");
+                }
+                ctotal.setText("");
+                cdias.setText("");
+            }
+        });
         pButtons.add(blimp);
         JButton bsalir = new JButton("Salir");
+        bsalir.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                refval.setVisible(false);
+                System.exit(0);
+            }
+        });
         pButtons.add(bsalir);
 
         root.add(pButtons, con);
