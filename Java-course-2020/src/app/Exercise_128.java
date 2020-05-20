@@ -138,6 +138,11 @@ public class Exercise_128 extends JFrame {
         JRadioButton microbus = new JRadioButton("Microbús");
         JRadioButton camioneta = new JRadioButton("Camioneta");
         JRadioButton motocicleta = new JRadioButton("Motocicleta");
+        ImageIcon image = new ImageIcon("Java-course-2020/images/default.png");
+        Image img = image.getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH);
+        image = new ImageIcon(img);
+        JLabel preview = new JLabel();
+        preview.setIcon(image);
 
         con.gridx = 0;
         con.gridy = 2;
@@ -162,6 +167,7 @@ public class Exercise_128 extends JFrame {
             gmodelo.add(i);
             modelo.add(i);
         }
+        modelo.add(preview);
 
         // Execution tweaks
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
