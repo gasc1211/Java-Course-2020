@@ -3,6 +3,7 @@ package app;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.*;
 
 public class Exercise_132 extends JFrame {
 
@@ -70,6 +71,11 @@ public class Exercise_132 extends JFrame {
         lsNoc.setPreferredSize(new Dimension(100, 150));
         lsNoc.setModel(nocturno);
 
+        tT1.setEnabled(false);
+        tT2.setEnabled(false);
+
+        rDiu.setSelected(true);
+
         c.gridx = 0;
         c.gridy = 0;
         root.add(lName, c);
@@ -108,14 +114,14 @@ public class Exercise_132 extends JFrame {
         root.add(bOrd1, c);
         c.gridx = 2;
         root.add(bOrd2, c);
-        c.gridy=9;
-        c.gridx=0;
+        c.gridy = 9;
+        c.gridx = 0;
         root.add(lBus1, c);
-        c.gridx=2;
+        c.gridx = 2;
         root.add(lBus2, c);
-        c.gridy=10;
+        c.gridy = 10;
         root.add(tB2, c);
-        c.gridx=0;
+        c.gridx = 0;
         root.add(tB1, c);
         c.gridy = 11;
         root.add(lTot1, c);
@@ -133,10 +139,83 @@ public class Exercise_132 extends JFrame {
             }
         };
 
+        ActionListener matricular = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nombre = tName.getText();
+                if (rDiu.isSelected()) {
+                    diurno.addElement(nombre);
+                } else {
+                    nocturno.addElement(nombre);
+                }
+                tName.setText("");
+                sincronizar();
+            }
+        };
+
+        ActionListener retirar = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nombre = tName.getText();
+                if (diurno.contains(nombre)) {
+                    diurno.removeElement(nombre);
+                }
+                if (nocturno.contains(nombre)) {
+                    nocturno.removeElement(nombre);
+                }
+                sincronizar();
+            }
+        };
+
+        ActionListener ordenar = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == bOrd1) {
+                    String[] cache = new String[diurno.getSize()];
+                    for (int i = 0; i < diurno.getSize(); i++) {
+                        cache[i] = diurno.getElementAt(i);
+                    }
+                    diurno.removeAllElements();
+                    Arrays.sort(cache);
+                    for (String i : cache) {
+                        diurno.addElement(i);
+                    }
+                } else {
+                    String[] cache = new String[nocturno.getSize()];
+                    for (int i = 0; i < nocturno.getSize(); i++) {
+                        cache[i] = nocturno.getElementAt(i);
+                    }
+                    nocturno.removeAllElements();
+                    Arrays.sort(cache);
+                    for (String i : cache) {
+                        nocturno.addElement(i);
+                    }
+                }
+            }
+        };
+
+        ActionListener mover = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == bP1) {
+                    
+                }
+            }
+        };
+
         bCer.addActionListener(cerrar);
+        bMat.addActionListener(matricular);
+        bRet.addActionListener(retirar);
+        bOrd1.addActionListener(ordenar);
+        bOrd2.addActionListener(ordenar);
 
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setVisible(true);
+    }
+
+    public void sincronizar() {
+        tT1.setText(Integer.toString(diurno.getSize()));
+        tT2.setText(Integer.toString(nocturno.getSize()));
     }
 
     public static void main(String[] args) {
