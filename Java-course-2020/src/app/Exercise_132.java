@@ -38,6 +38,9 @@ public class Exercise_132 extends JFrame {
     private DefaultListModel<String> nocturno = new DefaultListModel<>();
     private JList<String> lsNoc = new JList<>();
 
+    private ArrayList<String> dbase = new ArrayList();
+    private ArrayList<String> nbase = new ArrayList();
+
     private ButtonGroup gDN = new ButtonGroup();
     private JRadioButton rDiu = new JRadioButton("Diurno");
     private JRadioButton rNoc = new JRadioButton("Nocturno");
@@ -144,9 +147,9 @@ public class Exercise_132 extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String nombre = tName.getText();
                 if (rDiu.isSelected()) {
-                    diurno.addElement(nombre);
+                    dbase.add(nombre);
                 } else {
-                    nocturno.addElement(nombre);
+                    nbase.add(nombre);
                 }
                 tName.setText("");
                 sincronizar();
@@ -158,10 +161,11 @@ public class Exercise_132 extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String nombre = tName.getText();
                 if (diurno.contains(nombre)) {
-                    diurno.removeElement(nombre);
+                    dbase.remove(nombre);
                 }
                 if (nocturno.contains(nombre)) {
-                    nocturno.removeElement(nombre);
+                    nbase.remove(nombre);
+
                 }
                 sincronizar();
             }
@@ -198,7 +202,31 @@ public class Exercise_132 extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == bP1) {
-                    
+                    String movendo = lsDiu.getSelectedValue();
+                    diurno.removeElement(movendo);
+                    nocturno.addElement(movendo);
+                } else if (e.getSource() == bP2) {
+                    String movendo = lsNoc.getSelectedValue();
+                    nocturno.removeElement(movendo);
+                    diurno.addElement(movendo);
+                } else if (e.getSource() == bPM1) {
+                    String cache[] = new String[diurno.getSize()];
+                    for (int i = 0; i < diurno.getSize(); i++) {
+                        cache[i] = diurno.getElementAt(i);
+                    }
+                    diurno.removeAllElements();
+                    for (String i : cache) {
+                        nocturno.addElement(i);
+                    }
+                } else if (e.getSource() == bPM2) {
+                    String cache[] = new String[nocturno.getSize()];
+                    for (int i = 0; i < nocturno.getSize(); i++) {
+                        cache[i] = nocturno.getElementAt(i);
+                    }
+                    nocturno.removeAllElements();
+                    for (String i : cache) {
+                        diurno.addElement(i);
+                    }
                 }
             }
         };
@@ -208,6 +236,10 @@ public class Exercise_132 extends JFrame {
         bRet.addActionListener(retirar);
         bOrd1.addActionListener(ordenar);
         bOrd2.addActionListener(ordenar);
+        bP1.addActionListener(mover);
+        bPM1.addActionListener(mover);
+        bP2.addActionListener(mover);
+        bPM2.addActionListener(mover);
 
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setVisible(true);
@@ -216,6 +248,14 @@ public class Exercise_132 extends JFrame {
     public void sincronizar() {
         tT1.setText(Integer.toString(diurno.getSize()));
         tT2.setText(Integer.toString(nocturno.getSize()));
+        diurno.removeAllElements();
+        nocturno.removeAllElements();
+        for (String i:dbase) {
+            diurno.addElement(i);
+        }
+        for (String i:nbase) {
+            nocturno.addElement(i);
+        }
     }
 
     public static void main(String[] args) {
