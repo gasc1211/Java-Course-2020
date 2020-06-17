@@ -175,26 +175,11 @@ public class Exercise_132 extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == bOrd1) {
-                    String[] cache = new String[diurno.getSize()];
-                    for (int i = 0; i < diurno.getSize(); i++) {
-                        cache[i] = diurno.getElementAt(i);
-                    }
-                    diurno.removeAllElements();
-                    Arrays.sort(cache);
-                    for (String i : cache) {
-                        diurno.addElement(i);
-                    }
+                    Collections.sort(dbase);
                 } else {
-                    String[] cache = new String[nocturno.getSize()];
-                    for (int i = 0; i < nocturno.getSize(); i++) {
-                        cache[i] = nocturno.getElementAt(i);
-                    }
-                    nocturno.removeAllElements();
-                    Arrays.sort(cache);
-                    for (String i : cache) {
-                        nocturno.addElement(i);
-                    }
+                    Collections.sort(nbase);
                 }
+                sincronizar();
             }
         };
 
@@ -203,31 +188,20 @@ public class Exercise_132 extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == bP1) {
                     String movendo = lsDiu.getSelectedValue();
-                    diurno.removeElement(movendo);
-                    nocturno.addElement(movendo);
+                    dbase.remove(movendo);
+                    nbase.add(movendo);
                 } else if (e.getSource() == bP2) {
                     String movendo = lsNoc.getSelectedValue();
-                    nocturno.removeElement(movendo);
-                    diurno.addElement(movendo);
+                    nbase.remove(movendo);
+                    dbase.add(movendo);
                 } else if (e.getSource() == bPM1) {
-                    String cache[] = new String[diurno.getSize()];
-                    for (int i = 0; i < diurno.getSize(); i++) {
-                        cache[i] = diurno.getElementAt(i);
-                    }
-                    diurno.removeAllElements();
-                    for (String i : cache) {
-                        nocturno.addElement(i);
-                    }
+                    nbase.addAll(dbase);
+                    dbase.removeAll(dbase);
                 } else if (e.getSource() == bPM2) {
-                    String cache[] = new String[nocturno.getSize()];
-                    for (int i = 0; i < nocturno.getSize(); i++) {
-                        cache[i] = nocturno.getElementAt(i);
-                    }
-                    nocturno.removeAllElements();
-                    for (String i : cache) {
-                        diurno.addElement(i);
-                    }
+                    dbase.addAll(nbase);
+                    nbase.removeAll(nbase);
                 }
+                sincronizar();
             }
         };
 
