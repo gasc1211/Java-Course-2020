@@ -205,6 +205,27 @@ public class Exercise_132 extends JFrame {
             }
         };
 
+        KeyListener filtrar = new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (e.getSource() == tB1) {
+                    diurno.removeAllElements();
+                    for (String i:dbase) {
+                        if (i.contains(tB1.getText())) {
+                            diurno.addElement(i);
+                        }
+                    }
+                } else {
+                    nocturno.removeAllElements();
+                    for (String i:nbase) {
+                        if (i.contains(tB2.getText())) {
+                            nocturno.addElement(i);
+                        }
+                    }
+                }
+            }
+        };
+
         bCer.addActionListener(cerrar);
         bMat.addActionListener(matricular);
         bRet.addActionListener(retirar);
@@ -214,6 +235,8 @@ public class Exercise_132 extends JFrame {
         bPM1.addActionListener(mover);
         bP2.addActionListener(mover);
         bPM2.addActionListener(mover);
+        tB1.addKeyListener(filtrar);
+        tB2.addKeyListener(filtrar);
 
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setVisible(true);
@@ -230,6 +253,8 @@ public class Exercise_132 extends JFrame {
         for (String i:nbase) {
             nocturno.addElement(i);
         }
+        tB1.setText("");
+        tB2.setText("");
     }
 
     public static void main(String[] args) {
